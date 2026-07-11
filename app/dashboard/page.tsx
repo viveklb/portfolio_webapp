@@ -63,6 +63,12 @@ const trustNotes = [
     text: "Professional websites and tools built around real goals, not just visual templates.",
   },
 ];
+export const metadata = {
+  title: "Full-Stack Web Developer & Academic Project Specialist in Solapur",
+  description: "Hire Vivek Bharamshetti for MERN and Next.js web development, M.Tech research projects and B.E. final-year projects with source code and deployment support.",
+  alternates: { canonical: "/dashboard" },
+  openGraph: { url: "/dashboard", title: "Full-Stack Web Developer in Solapur | Vivek Bharamshetti", description: "Web development and complete academic project solutions for students, startups and businesses." },
+};
 export default function Home() {
   return (
     <main>

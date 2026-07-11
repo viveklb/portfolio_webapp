@@ -1,4 +1,10 @@
 ﻿import SectionLayout from "../section-layout";
+export const metadata = {
+  title: "About Vivek Bharamshetti - Software Developer",
+  description: "Meet Vivek Bharamshetti, a Solapur-based software developer experienced in MERN, Next.js, Firebase, REST APIs and academic project development.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about", title: "About Vivek Bharamshetti", description: "Software developer, MERN specialist and creator of 150+ web and academic projects." },
+};
 export default function About() {
   return (
     <SectionLayout>

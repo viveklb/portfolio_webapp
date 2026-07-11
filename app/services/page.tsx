@@ -20,6 +20,12 @@ const plans = [
     text: "Responsive websites and full-stack applications shaped around your goals and audience.",
   },
 ];
+export const metadata = {
+  title: "Web Development, M.Tech & B.E. Project Services",
+  description: "Transparent pricing for M.Tech projects, B.E. final-year projects and professional web development with complete source code, documentation and deployment support.",
+  alternates: { canonical: "/services" },
+  openGraph: { url: "/services", title: "Project Development Services & Pricing", description: "M.Tech projects from ₹25,000, B.E. projects from ₹10,000 and custom web development." },
+};
 export default function Services() {
   return (
     <SectionLayout>

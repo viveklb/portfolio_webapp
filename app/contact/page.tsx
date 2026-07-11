@@ -1,5 +1,11 @@
 ﻿import SectionLayout from "../section-layout";
 import ProjectForm from "./ProjectForm";
+export const metadata = {
+  title: "Contact Vivek - Start Your Web or Academic Project",
+  description: "Discuss a website, MERN application, M.Tech project or B.E. final-year project with Vivek Bharamshetti in Solapur. Request a timeline and quote.",
+  alternates: { canonical: "/contact" },
+  openGraph: { url: "/contact", title: "Start Your Project with Vivek", description: "Share your project requirements and receive a practical development plan and quote." },
+};
 export default async function Contact({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
   const { type } = await searchParams;
   return (

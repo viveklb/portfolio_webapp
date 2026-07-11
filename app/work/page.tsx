@@ -32,6 +32,12 @@ const work = [
     text: "Production setup and guidance so your project works beyond the local machine.",
   },
 ];
+export const metadata = {
+  title: "Web Development & Academic Project Portfolio",
+  description: "Explore full-stack web apps, M.Tech research projects, B.E. final-year software, dashboards, APIs and deployment work by Vivek Bharamshetti.",
+  alternates: { canonical: "/work" },
+  openGraph: { url: "/work", title: "Web & Academic Project Portfolio", description: "A selection of full-stack applications and engineering projects built for real-world use." },
+};
 export default function Work() {
   return (
     <SectionLayout>
