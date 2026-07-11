@@ -1,5 +1,7 @@
 ﻿import SectionLayout from "../section-layout";
-export default function Contact() {
+import ProjectForm from "./ProjectForm";
+export default async function Contact({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
+  const { type } = await searchParams;
   return (
     <SectionLayout>
       <header className="pageHero contactHero wrap">
@@ -13,10 +15,14 @@ export default function Contact() {
           Tell me what you want to build, your degree level or business goal,
           and your preferred timeline.
         </p>
-        <a className="btn" href="mailto:bharamshettivivek71@gmail.com">
-          Email me ↗
-        </a>
+        <p className="contactActions">
+          <a className="btn" href="mailto:bharamshettivivek71@gmail.com">
+            Email me ↗
+          </a>
+          <a href="tel:+917083232813">Call 7083232813</a>
+        </p>
       </header>
+      <ProjectForm selectedType={type} />
       <section className="contactGrid wrap">
         <div>
           <small>PROJECT TYPES</small>
@@ -44,6 +50,8 @@ export default function Contact() {
             Currently accepting
             <br />
             new projects.
+            <br />
+            Phone: 7083232813
           </p>
         </div>
       </section>

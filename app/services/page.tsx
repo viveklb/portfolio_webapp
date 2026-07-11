@@ -1,4 +1,5 @@
 ﻿import SectionLayout from "../section-layout";
+import Link from "next/link";
 const plans = [
   {
     tag: "FOR POSTGRADUATES",
@@ -33,7 +34,7 @@ export default function Services() {
           <p>Transparent starting prices with scope-based final quotations.</p>
         </div>
       </header>
-      <section className="servicePage">
+      <section className="servicePage" id="pricing">
         <div className="prices wrap">
           {plans.map((x, i) => (
             <article className={i === 1 ? "featured" : ""} key={x.name}>
@@ -44,7 +45,7 @@ export default function Services() {
                 <span>Starting at</span>
                 <b>{x.price}</b>
               </div>
-              <a href="/contact">Discuss your project ↗</a>
+              <Link href={`/contact?type=${encodeURIComponent(x.name)}#project-requirements`}>Choose this service ↗</Link>
             </article>
           ))}
         </div>

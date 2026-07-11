@@ -1,4 +1,5 @@
 ﻿import SectionLayout from "../section-layout";
+import Link from "next/link";
 const work = [
   {
     name: "Full-stack Web Apps",
@@ -54,6 +55,9 @@ export default function Work() {
             <small>{x.tag}</small>
             <h3>{x.name}</h3>
             <p>{x.text}</p>
+            <Link className="cardAction" href={`/contact?type=${encodeURIComponent(x.name)}#project-requirements`}>
+              Start this project ↗
+            </Link>
           </article>
         ))}
       </section>

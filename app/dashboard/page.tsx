@@ -1,4 +1,6 @@
 ﻿import Image from "next/image";
+import Navbar from "../navbar";
+import Link from "next/link";
 const A = () => <span>↗</span>;
 const services = [
   {
@@ -20,22 +22,51 @@ const services = [
     text: "Responsive websites and full-stack applications shaped around your goals and audience.",
   },
 ];
+const processSteps = [
+  {
+    step: "01",
+    title: "Discovery",
+    text: "We clarify your idea, modules, deadline, guide requirements and expected output.",
+  },
+  {
+    step: "02",
+    title: "Build",
+    text: "I design and develop the project with clean UI, working logic and practical documentation.",
+  },
+  {
+    step: "03",
+    title: "Handover",
+    text: "You receive source code, deployment support and explanation so you can present confidently.",
+  },
+];
+const deliverables = [
+  "Modern responsive UI",
+  "Complete source code",
+  "Database integration",
+  "Admin/user modules",
+  "Project documentation",
+  "Deployment guidance",
+  "Git repository setup",
+  "Final demo support",
+];
+const trustNotes = [
+  {
+    title: "For students",
+    text: "Clear academic flow, practical modules and project explanations for M.Tech and B.E. submissions.",
+  },
+  {
+    title: "For startups",
+    text: "Fast MVP-style web apps with clean pages, authentication, dashboard screens and deployment support.",
+  },
+  {
+    title: "For businesses",
+    text: "Professional websites and tools built around real goals, not just visual templates.",
+  },
+];
 export default function Home() {
   return (
     <main>
-      <nav className="nav wrap">
-        <a className="logo" href="/dashboard">
-          <b>V</b>Vivek.dev
-        </a>
-        <div>
-          <a href="/about">About</a>
-          <a href="/work">Work</a>
-          <a href="/services">Services</a>
-        </div>
-        <a className="talk" href="/contact">
-          Let&lsquo;s talk ↗
-        </a>
-      </nav>
+      <Navbar />
       <section className="hero wrap" id="home">
         <div className="heroCopy">
           <p className="eyebrow">● AVAILABLE FOR NEW PROJECTS</p>
@@ -49,10 +80,11 @@ export default function Home() {
             polished experiences — from first idea to final deployment.
           </p>
           <p className="actions">
-            <a className="btn" href="/work">
+            <Link className="btn" href="/work">
               Explore my work <A />
-            </a>
-            <a href="/services">View pricing ↓</a>
+            </Link>
+            <Link href="/services#pricing">View pricing ↓</Link>
+            <Link href="/login">Client login →</Link>
           </p>
           <div className="proof">
             <strong>150+</strong>
@@ -138,6 +170,7 @@ export default function Home() {
                       ? "Advanced academic projects with complete source code and guidance."
                       : "Practical final-year solutions, built and documented end to end."}
                 </p>
+                <Link className="cardAction" href="/work">View details ↗</Link>
               </article>
             ),
           )}
@@ -161,9 +194,9 @@ export default function Home() {
                   <span>Starting at</span>
                   <b>{s.price}</b>
                 </div>
-                <a href="/contact">
+                <Link href={`/contact?type=${encodeURIComponent(s.name)}#project-requirements`}>
                   Discuss your project <A />
-                </a>
+                </Link>
               </article>
             ))}
           </div>
@@ -193,6 +226,57 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <section className="process section wrap">
+        <small>05 / HOW I WORK</small>
+        <h2>
+          From rough idea
+          <br />
+          to <em>working product.</em>
+        </h2>
+        <div className="processGrid">
+          {processSteps.map((item) => (
+            <article key={item.step}>
+              <span>{item.step}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="deliverables section">
+        <div className="wrap">
+          <small>06 / WHAT YOU GET</small>
+          <h2>
+            Practical output,
+            <br />
+            not just <em>screenshots.</em>
+          </h2>
+          <div className="deliverableGrid">
+            {deliverables.map((item, index) => (
+              <p key={item}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="trust section wrap">
+        <small>07 / BUILT FOR REAL NEEDS</small>
+        <h2>
+          One developer,
+          <br />
+          many <em>project goals.</em>
+        </h2>
+        <div className="trustGrid">
+          {trustNotes.map((item) => (
+            <article key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <footer id="contact">
         <div className="wrap">
           <small>HAVE A PROJECT IN MIND?</small>
@@ -201,15 +285,15 @@ export default function Home() {
             <br />
             <em>remarkable.</em>
           </h2>
-          <a className="btn" href="mailto:hello@example.com">
+          <Link className="btn" href="/contact#project-requirements">
             Start a conversation <A />
-          </a>
+          </Link>
           <div className="foot">
             <a className="logo" href="/dashboard">
               <b>V</b>Vivek.dev
             </a>
             <span>Web developer · M.Tech & B.E. project specialist</span>
-            <span>© 2026 Vivek</span>
+            <span>Phone: 7083232813</span>
           </div>
         </div>
       </footer>
