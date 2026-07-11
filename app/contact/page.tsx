@@ -13,7 +13,7 @@ export default function Contact() {
           Tell me what you want to build, your degree level or business goal,
           and your preferred timeline.
         </p>
-        <a className="btn" href="mailto:hello@example.com">
+        <a className="btn" href="mailto:bharamshettivivek71@gmail.com">
           Email me ↗
         </a>
       </header>
