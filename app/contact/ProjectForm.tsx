@@ -1,34 +1,90 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { getFirebaseDb, isFirebaseConfigured } from "@/lib/firebase";
+
+type SubmitState = "idle" | "submitting" | "success" | "error";
+
+function value(data: FormData, key: string) {
+  return String(data.get(key) ?? "").trim();
+}
 
 export default function ProjectForm({ selectedType = "" }: { selectedType?: string }) {
-  const [sent, setSent] = useState(false);
-  function submitProject(event: FormEvent<HTMLFormElement>) {
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [message, setMessage] = useState("");
+
+  async function submitProject(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = [
-      `Project name: ${data.get("projectName")}`, `Name: ${data.get("clientName")}`,
-      `Branch / business: ${data.get("branch")}`, `Phone: ${data.get("phone")}`,
-      `Email: ${data.get("email")}`, `Project type: ${data.get("projectType")}`,
-      `Deadline: ${data.get("deadline") || "Not specified"}`, "", "Requirements:", String(data.get("requirements")),
-    ].join("\n");
-    setSent(true);
-    window.location.href = `mailto:bharamshettivivek71@gmail.com?subject=${encodeURIComponent(`Project enquiry: ${data.get("projectName")}`)}&body=${encodeURIComponent(body)}`;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    // Quietly accept bot submissions without writing them to Firestore.
+    if (value(data, "website")) {
+      setSubmitState("success");
+      setMessage("Thanks — your project requirements have been received.");
+      return;
+    }
+
+    if (!isFirebaseConfigured) {
+      setSubmitState("error");
+      setMessage("The enquiry service is not configured yet. Please call or email instead.");
+      return;
+    }
+
+    setSubmitState("submitting");
+    setMessage("");
+
+    try {
+      await addDoc(collection(getFirebaseDb(), "projectEnquiries"), {
+        clientName: value(data, "clientName"),
+        projectName: value(data, "projectName"),
+        branch: value(data, "branch"),
+        phone: value(data, "phone"),
+        email: value(data, "email").toLowerCase(),
+        projectType: value(data, "projectType"),
+        deadline: value(data, "deadline"),
+        requirements: value(data, "requirements"),
+        status: "new",
+        source: "website-contact",
+        createdAt: serverTimestamp(),
+      });
+
+      form.reset();
+      setSubmitState("success");
+      setMessage("Thanks — your project requirements were sent successfully. I’ll contact you soon.");
+    } catch (error) {
+      console.error("Unable to save project enquiry", error);
+      setSubmitState("error");
+      setMessage("Your enquiry could not be sent. Please try again or use the phone number above.");
+    }
   }
+
+  const isSubmitting = submitState === "submitting";
+
   return (
     <section className="projectFormSection wrap" id="project-requirements">
-      <div className="formIntro"><small>PROJECT REQUIREMENTS</small><h2>Tell me what you want to <em>build.</em></h2><p>Share the essentials and I’ll reply with the best approach, timeline and quote.</p></div>
+      <div className="formIntro">
+        <small>PROJECT REQUIREMENTS</small>
+        <h2>Tell me what you want to <em>build.</em></h2>
+        <p>Share the essentials and I’ll reply with the best approach, timeline and quote.</p>
+      </div>
       <form className="projectForm" onSubmit={submitProject}>
-        <label>Your name <span>*</span><input name="clientName" required autoComplete="name" placeholder="Your full name" /></label>
-        <label>Project name <span>*</span><input name="projectName" required placeholder="e.g. Smart Attendance System" /></label>
-        <label>Branch / business <span>*</span><input name="branch" required placeholder="e.g. CSE, E&TC or company name" /></label>
-        <label>Phone number <span>*</span><input name="phone" required type="tel" autoComplete="tel" inputMode="tel" placeholder="Your contact number" /></label>
-        <label>Email <span>*</span><input name="email" required type="email" autoComplete="email" placeholder="you@example.com" /></label>
+        <label>Your name <span>*</span><input name="clientName" required minLength={2} maxLength={100} autoComplete="name" placeholder="Your full name" /></label>
+        <label>Project name <span>*</span><input name="projectName" required minLength={2} maxLength={150} placeholder="e.g. Smart Attendance System" /></label>
+        <label>Branch / business <span>*</span><input name="branch" required minLength={2} maxLength={120} placeholder="e.g. CSE, E&TC or company name" /></label>
+        <label>Phone number <span>*</span><input name="phone" required minLength={7} maxLength={20} type="tel" autoComplete="tel" inputMode="tel" placeholder="Your contact number" /></label>
+        <label>Email <span>*</span><input name="email" required maxLength={160} type="email" autoComplete="email" placeholder="you@example.com" /></label>
         <label>Project type <span>*</span><select name="projectType" required defaultValue={selectedType}><option value="" disabled>Select a project type</option><option>M.Tech Project</option><option>B.E. Project</option><option>Web Development</option><option>Other</option></select></label>
         <label>Preferred deadline<input name="deadline" type="date" /></label>
-        <label className="fullField">Project requirements <span>*</span><textarea name="requirements" required rows={6} placeholder="Describe the main idea, required modules, technology preference and expected output." /></label>
-        <div className="formSubmit fullField"><button className="btn" type="submit">Send project requirements ↗</button>{sent ? <small>Your email app is opening with the details filled in.</small> : null}</div>
+        <label className="fullField">Project requirements <span>*</span><textarea name="requirements" required minLength={10} maxLength={3000} rows={6} placeholder="Describe the main idea, required modules, technology preference and expected output." /></label>
+        <label className="formHoneypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+        <div className="formSubmit fullField">
+          <button className="btn" disabled={isSubmitting} type="submit">
+            {isSubmitting ? "Sending…" : "Send project requirements ↗"}
+          </button>
+          <p className={`formMessage ${submitState}`} aria-live="polite">{message}</p>
+        </div>
       </form>
     </section>
   );

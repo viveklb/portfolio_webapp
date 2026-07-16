@@ -1,5 +1,37 @@
 ﻿import SectionLayout from "../section-layout";
 import Link from "next/link";
+import Image from "next/image";
+import plantVisionImage from "@/public/projects/plantvision-growth-monitoring.png";
+import uavRadarImage from "@/public/projects/uav-radar-sensor-fusion.png";
+import crackMncImage from "@/public/projects/crackmnc-career-platform.png";
+
+const currentProjects = [
+  {
+    name: "PlantVision",
+    title: "Advanced Plant Growth Monitoring System",
+    tag: "AI VISION · IOT · ESP TELEMETRY",
+    text: "A plant-health monitoring workspace that combines image analysis, live ESP telemetry and scan history to track growth, moisture and environmental conditions.",
+    image: plantVisionImage,
+    alt: "PlantVision advanced plant growth monitoring dashboard with image analysis and health metrics",
+  },
+  {
+    name: "UAV Radar",
+    title: "Radar Sensor Fusion & Tracking",
+    tag: "OPENCV · YOLO · SENSOR FUSION",
+    text: "A real-time radar interface that fuses radar-wave scanning with computer-vision tracking for UAV detection, target locking and trajectory monitoring.",
+    image: uavRadarImage,
+    alt: "UAV radar sensor fusion dashboard showing live radar scanning and target configuration",
+  },
+  {
+    name: "CrackMNC",
+    title: "Career Preparation Workspace",
+    tag: "CAREER PLATFORM · DASHBOARD",
+    text: "A focused placement platform bringing applications, mock interviews, resumes, question banks, coding practice and study materials into one workspace.",
+    image: crackMncImage,
+    alt: "CrackMNC career preparation dashboard with interview, resume and application tools",
+  },
+];
+
 const work = [
   {
     name: "Full-stack Web Apps",
@@ -53,6 +85,42 @@ export default function Work() {
           engineering.
         </p>
       </header>
+      <section className="currentWork wrap" aria-labelledby="current-projects-title">
+        <div className="currentWorkHeading">
+          <div>
+            <small>RECENTLY BUILT</small>
+            <h2 id="current-projects-title">Current <em>projects.</em></h2>
+          </div>
+          <p>
+            Active product work across AI-assisted monitoring, sensor fusion
+            and career technology.
+          </p>
+        </div>
+        <div className="currentProjectsGrid">
+          {currentProjects.map((project, index) => (
+            <article className={index === 0 ? "currentProject featuredProject" : "currentProject"} key={project.name}>
+              <div className="projectScreenshot">
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  fill
+                  placeholder="blur"
+                  sizes={index === 0 ? "(max-width: 800px) 100vw, 1180px" : "(max-width: 800px) 100vw, 580px"}
+                />
+              </div>
+              <div className="projectDetails">
+                <span>0{index + 1} / {project.name}</span>
+                <small>{project.tag}</small>
+                <h3>{project.title}</h3>
+                <p>{project.text}</p>
+                <Link href={`/contact?type=${encodeURIComponent(project.title)}#project-requirements`}>
+                  Build a project like this ↗
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="cards pageCards wrap">
         {work.map((x, i) => (
           <article key={x.name}>

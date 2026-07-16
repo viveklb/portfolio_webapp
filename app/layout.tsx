@@ -1,6 +1,24 @@
 import type { Metadata, Viewport } from "next";
+import { Google_Sans, Roboto } from "next/font/google";
 import { defaultDescription, ownerName, siteName, siteUrl } from "@/lib/seo";
 import "./globals.css";
+import "./light-theme.css";
+
+const googleSans = Google_Sans({
+  subsets: ["latin"],
+  weight: "variable",
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-google-sans",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: "variable",
+  style: "normal",
+  display: "swap",
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -22,7 +40,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
 };
 
-export const viewport: Viewport = { themeColor: "#050b18", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#ffffff", colorScheme: "light" };
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -33,5 +51,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en-IN"><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} /></body></html>;
+  return <html lang="en-IN" className={`${googleSans.variable} ${roboto.variable}`}><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} /></body></html>;
 }

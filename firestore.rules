@@ -1,0 +1,46 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /projectEnquiries/{enquiryId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'clientName', 'projectName', 'branch', 'phone', 'email',
+          'projectType', 'deadline', 'requirements', 'status', 'source',
+          'createdAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'clientName', 'projectName', 'branch', 'phone', 'email',
+          'projectType', 'deadline', 'requirements', 'status', 'source',
+          'createdAt'
+        ]) &&
+        request.resource.data.clientName is string &&
+        request.resource.data.clientName.size() >= 2 &&
+        request.resource.data.clientName.size() <= 100 &&
+        request.resource.data.projectName is string &&
+        request.resource.data.projectName.size() >= 2 &&
+        request.resource.data.projectName.size() <= 150 &&
+        request.resource.data.branch is string &&
+        request.resource.data.branch.size() >= 2 &&
+        request.resource.data.branch.size() <= 120 &&
+        request.resource.data.phone is string &&
+        request.resource.data.phone.size() >= 7 &&
+        request.resource.data.phone.size() <= 20 &&
+        request.resource.data.email is string &&
+        request.resource.data.email.size() <= 160 &&
+        request.resource.data.projectType in [
+          'M.Tech Project', 'B.E. Project', 'Web Development', 'Other'
+        ] &&
+        request.resource.data.deadline is string &&
+        request.resource.data.deadline.size() <= 10 &&
+        request.resource.data.requirements is string &&
+        request.resource.data.requirements.size() >= 10 &&
+        request.resource.data.requirements.size() <= 3000 &&
+        request.resource.data.status == 'new' &&
+        request.resource.data.source == 'website-contact' &&
+        request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if false;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,16 +12,22 @@ const firebaseConfig = {
 export const isFirebaseConfigured =
   Object.values(firebaseConfig).every(Boolean);
 
-export function getFirebaseAuth() {
+function getFirebaseApp() {
   if (!isFirebaseConfigured) {
     throw new Error(
       "Firebase public environment variables are not configured.",
     );
   }
 
-  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  return getApps().length ? getApp() : initializeApp(firebaseConfig);
+}
 
-  return getAuth(app);
+export function getFirebaseAuth() {
+  return getAuth(getFirebaseApp());
+}
+
+export function getFirebaseDb() {
+  return getFirestore(getFirebaseApp());
 }
 
 export const googleProvider = new GoogleAuthProvider();

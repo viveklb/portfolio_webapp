@@ -1,0 +1,792 @@
+:root {
+  --ink: #0b1220;
+  --paper: #ffffff;
+  --purple: #1557ff;
+  --acid: #2563eb;
+  --line: #dce5f2;
+}
+
+html,
+body {
+  background: #ffffff;
+  color: #0b1220;
+}
+
+h1,
+h2,
+h3,
+b,
+strong {
+  color: #0b1220;
+}
+
+em,
+.hero h1 em,
+.about h2 em,
+.section h2 em,
+.skills h2 em,
+.formIntro h2 em,
+.currentWorkHeading h2 em,
+.ownerStoryTitle h2 em,
+.deliverables h2 em,
+.process h2 em,
+.trust h2 em,
+.loginCopy h1 em {
+  color: #1557ff;
+}
+
+small {
+  color: #1557ff;
+}
+
+.nav {
+  position: sticky;
+  z-index: 50;
+  top: 14px;
+  height: 64px;
+  margin-top: 14px;
+  padding: 0 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #dce5f2;
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(37, 74, 135, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.logo,
+.nav a,
+.navUserName {
+  color: #0b1220;
+}
+
+.logo b {
+  color: #1557ff;
+}
+
+.nav a:hover {
+  color: #1557ff;
+}
+
+.navProfile img {
+  border-color: #b8c9e6;
+}
+
+.navProfile > span:first-child {
+  background: #1557ff;
+  color: #ffffff;
+}
+
+.talk,
+.btn {
+  background: linear-gradient(135deg, #1557ff, #0a43d8);
+  color: #ffffff !important;
+  box-shadow: 0 10px 24px rgba(21, 87, 255, 0.2);
+}
+
+.eyebrow {
+  color: #0d4ed8;
+  background: #edf4ff;
+  border-color: #c8dcff;
+}
+
+.lead,
+.bio,
+.proof span,
+.pageHero > p,
+.pageHero .wrap > p,
+.pageCopy p,
+.currentWorkHeading > p,
+.formIntro p,
+.experienceCard p,
+.detailColumn p,
+.cvProjects article p,
+.processGrid p,
+.trustGrid p,
+.projectDetails p,
+.loginPanel p,
+.userCard small,
+.setupNote {
+  color: #4b5a70;
+}
+
+.proof strong {
+  color: #1557ff;
+}
+
+.actions > a:not(.btn) {
+  color: #174ea6;
+}
+
+.actions > a:last-child {
+  border-color: #a9c3ef;
+}
+
+.hero .photo:after {
+  background: radial-gradient(
+    circle,
+    rgba(53, 116, 255, 0.25) 0 42%,
+    rgba(183, 209, 255, 0.32) 43% 61%,
+    transparent 62%
+  );
+  box-shadow: 0 0 100px rgba(21, 87, 255, 0.16);
+}
+
+.hero .photo .ring {
+  border-color: rgba(21, 87, 255, 0.42);
+}
+
+.hero .photo > .portraitCrop {
+  background: #edf4ff;
+  border-color: #b9cff5;
+  box-shadow:
+    0 28px 75px rgba(38, 69, 118, 0.2),
+    0 0 0 10px rgba(21, 87, 255, 0.06);
+}
+
+.hero .photo aside {
+  background: #ffffff;
+  color: #0b1220;
+  border-color: #cfdbec;
+  box-shadow: 0 18px 40px rgba(39, 72, 125, 0.16);
+}
+
+.hero .photo aside strong {
+  color: #1557ff;
+}
+
+.strip {
+  background: #1557ff;
+  border-color: #1557ff;
+  color: #ffffff;
+}
+
+.about,
+.services,
+.deliverables,
+.darkHero,
+.servicePage {
+  background: #f5f8ff;
+  color: #0b1220;
+  border-color: #dce5f2;
+}
+
+.stats p {
+  background: #ffffff;
+  border-color: #dce5f2;
+  color: #5e6c80;
+}
+
+.stats b {
+  color: #0b1220;
+}
+
+.cards article,
+.prices article,
+.skills > div p,
+.processGrid article,
+.trustGrid article,
+.deliverableGrid p,
+.currentProject,
+.experienceCard,
+.skillCloud span,
+.cvProjects article,
+.loginHighlights p,
+.loginPanel,
+.userCard,
+.projectForm {
+  background: #ffffff;
+  border-color: #dce5f2;
+  color: #0b1220;
+  box-shadow: 0 12px 34px rgba(38, 69, 118, 0.07);
+}
+
+.cards h3,
+.prices h3,
+.skills b,
+.processGrid h3,
+.trustGrid h3,
+.projectDetails h3,
+.userCard b {
+  color: #0b1220;
+}
+
+.cards p,
+.prices p {
+  color: #536176;
+}
+
+.cards article:hover {
+  border-color: #7aa5f7;
+}
+
+.visual,
+.v1,
+.v2 {
+  background: linear-gradient(135deg, #1557ff, #4c8dff);
+  color: #ffffff;
+}
+
+.prices {
+  background: transparent;
+}
+
+.prices .featured {
+  background: linear-gradient(145deg, #1557ff, #0a43d8);
+  border-color: #1557ff;
+}
+
+.prices .featured h3,
+.prices .featured p,
+.prices .featured small,
+.prices .featured span,
+.prices .featured b,
+.prices .featured a {
+  color: #ffffff;
+}
+
+.services small,
+.services em,
+.skills i,
+.processGrid span,
+.deliverableGrid span {
+  color: #1557ff;
+}
+
+.skills > div p:after {
+  background: linear-gradient(90deg, #1557ff 86%, #d8e5fa 86%);
+}
+
+.process,
+.ownerStory,
+.cvProjects {
+  border-color: #dce5f2;
+}
+
+.deliverableGrid p {
+  color: #0b1220;
+}
+
+.pageHero,
+.pageCopy,
+.aboutDetail,
+.contactGrid,
+.pageFoot {
+  color: #0b1220;
+}
+
+.aboutDetail,
+.contactGrid,
+.pageFoot,
+.aboutDetail div,
+.contactGrid div,
+.detailColumn article {
+  border-color: #dce5f2;
+}
+
+.aboutDetail span {
+  color: #5e6c80;
+}
+
+.aboutDetail b {
+  color: #1557ff;
+}
+
+.contactActions > a:last-child,
+.profileLinks a {
+  color: #1557ff;
+  background: #ffffff;
+  border-color: #9dbcf2;
+}
+
+.projectScreenshot {
+  background: #edf4ff;
+}
+
+.featuredProject .projectDetails {
+  border-color: #dce5f2;
+}
+
+.projectDetails > span,
+.experienceCard span,
+.detailColumn article span,
+.cvProjects article > span {
+  color: #1557ff;
+}
+
+.projectDetails small {
+  color: #526786;
+}
+
+.projectDetails a,
+.cardAction {
+  color: #1557ff !important;
+}
+
+.projectDetails a:hover,
+.cardAction:hover {
+  color: #003cae !important;
+}
+
+.skillCloud span {
+  color: #243247;
+}
+
+.projectForm label {
+  color: #243247;
+}
+
+.projectForm label span {
+  color: #1557ff;
+}
+
+.projectForm input,
+.projectForm select,
+.projectForm textarea {
+  background: #f8faff;
+  color: #0b1220;
+  border-color: #cbd8ec;
+}
+
+.projectForm input:focus,
+.projectForm select:focus,
+.projectForm textarea:focus {
+  border-color: #1557ff;
+  box-shadow: 0 0 0 3px rgba(21, 87, 255, 0.12);
+}
+
+.loginPanel {
+  background:
+    linear-gradient(145deg, rgba(21, 87, 255, 0.08), transparent 38%), #ffffff;
+}
+
+.loginPanel > span,
+.loginHighlights b {
+  color: #1557ff;
+}
+
+.loginHighlights p {
+  color: #344258;
+}
+
+.googleBtn {
+  background: #ffffff;
+  color: #0b1220;
+  border: 1px solid #cbd8ec;
+}
+
+.ghostBtn {
+  background: #edf4ff;
+  color: #1557ff;
+  border-color: #9dbcf2;
+}
+
+.userCard {
+  background: #f8faff;
+}
+
+.userCard > strong {
+  background: #1557ff;
+  color: #ffffff;
+}
+
+footer {
+  background: #f5f8ff;
+  border-color: #dce5f2;
+}
+
+footer small,
+footer h2 em {
+  color: #1557ff;
+}
+
+.foot {
+  border-color: #dce5f2;
+  color: #536176;
+}
+
+@media (max-width: 800px) {
+  .nav {
+    width: calc(100% - 24px);
+    top: 8px;
+    margin-top: 8px;
+    padding: 0 12px;
+    border-radius: 15px;
+  }
+
+  .nav .navLinks {
+    display: flex;
+    gap: 14px;
+  }
+
+  .navLinks a {
+    font-size: 13px;
+  }
+
+  .nav .talk {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav {
+    height: 58px;
+  }
+
+  .logo {
+    font-size: 0;
+  }
+
+  .logo b {
+    font-size: 20px;
+  }
+
+  .nav .navLinks {
+    gap: 10px;
+  }
+
+  .navLinks a {
+    font-size: 12px;
+  }
+}
+
+/* Floating navigation motion */
+.nav {
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  animation: navDropIn 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 150%;
+  aspect-ratio: 1;
+  left: -25%;
+  top: 50%;
+  margin-top: -75%;
+  background: conic-gradient(
+    from 0deg,
+    #dce8ff 0deg,
+    #1557ff 55deg,
+    #76a7ff 105deg,
+    #eef4ff 165deg,
+    #eef4ff 260deg,
+    #1557ff 320deg,
+    #dce8ff 360deg
+  );
+  animation: navBorderSpin 8s linear infinite;
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1.5px;
+  border-radius: 16.5px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+}
+
+.nav > * {
+  position: relative;
+  z-index: 1;
+}
+
+.navItem {
+  position: relative;
+  padding: 9px 10px;
+  border-radius: 10px;
+  transition:
+    transform 0.22s ease,
+    color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+  animation: navItemReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.navLinks .navItem:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.navLinks .navItem:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.navLinks .navItem:nth-child(3) {
+  animation-delay: 0.22s;
+}
+.navLinks .navItem:nth-child(4) {
+  animation-delay: 0.28s;
+}
+
+.navItem::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  right: 10px;
+  bottom: 4px;
+  left: 10px;
+  border-radius: 999px;
+  background: #1557ff;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
+}
+
+.navItem:hover {
+  color: #1557ff;
+  background: #f1f6ff;
+  transform: translateY(-2px);
+}
+
+.navItem:hover::after,
+.navItem.active::after {
+  transform: scaleX(1);
+}
+
+.navItem.active {
+  color: #1557ff !important;
+  background: #eaf2ff;
+  box-shadow: 0 6px 16px rgba(21, 87, 255, 0.12);
+  animation: navActivePop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.navItem:active,
+.navCta:active,
+.logo:active {
+  transform: scale(0.93);
+}
+
+.logo,
+.navCta {
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.logo b {
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo:hover b {
+  transform: rotate(-10deg) scale(1.12);
+}
+
+.navCta:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(21, 87, 255, 0.28);
+}
+
+.navCta.active {
+  box-shadow:
+    0 0 0 4px rgba(21, 87, 255, 0.13),
+    0 12px 26px rgba(21, 87, 255, 0.24);
+}
+
+@keyframes navBorderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes navDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes navItemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navActivePop {
+  0% {
+    transform: scale(0.92);
+  }
+  65% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 800px) {
+  .nav::after {
+    border-radius: 13.5px;
+  }
+  .navItem {
+    padding: 8px 5px;
+  }
+  .navItem::after {
+    right: 5px;
+    left: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav::before,
+  .navItem,
+  .navItem.active {
+    animation: none !important;
+  }
+
+  .navItem,
+  .navItem::after,
+  .navCta,
+  .logo,
+  .logo b {
+    transition: none !important;
+  }
+}
+
+/* Typography: Google Sans for the brand and display hierarchy, Roboto for UI/body copy. */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-roboto), Roboto, Arial, sans-serif;
+}
+
+.logo,
+h1,
+h2,
+h3,
+.visual {
+  font-family: var(--font-google-sans), "Google Sans", Arial, sans-serif;
+}
+
+em {
+  font-family: inherit;
+}
+
+.bio,
+.pageCopy p {
+  font-family: var(--font-roboto), Roboto, Arial, sans-serif;
+}
+
+/* Mobile navigation keeps every destination visible as a large icon target. */
+.navIcon {
+  display: none;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 800px) {
+  html {
+    scroll-padding-top: 78px;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  .nav {
+    width: calc(100% - 24px);
+    height: 60px;
+    top: 8px;
+    margin-top: 8px;
+    padding: 6px;
+    gap: 2px;
+    justify-content: stretch;
+  }
+
+  .nav::after {
+    border-radius: 13.5px;
+  }
+
+  .nav .navLinks {
+    display: flex;
+    flex: 4 1 0;
+    min-width: 0;
+    align-items: center;
+    justify-content: stretch;
+    gap: 2px;
+  }
+
+  .nav > .logo,
+  .nav > .navCta,
+  .nav .navItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 11px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav > .logo,
+  .nav > .navCta {
+    flex: 1 1 0;
+  }
+
+  .nav .navItem {
+    flex: 1 1 0;
+  }
+
+  .nav .navIcon {
+    display: block;
+  }
+
+  .nav .logo b,
+  .navBrandText,
+  .navLabel,
+  .navUserName,
+  .navCtaLabel {
+    display: none;
+  }
+
+  .nav .navProfile img,
+  .nav .navProfile > span:first-child {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav .navCta {
+    background: linear-gradient(135deg, #1557ff, #0a43d8);
+    color: #ffffff !important;
+    box-shadow: 0 6px 14px rgba(21, 87, 255, 0.22);
+  }
+
+  .navItem::after {
+    right: 11px;
+    bottom: 3px;
+    left: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    width: calc(100% - 12px);
+    top: 6px;
+    margin-top: 6px;
+    padding-inline: 4px;
+  }
+
+  .nav .navIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
