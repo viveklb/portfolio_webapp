@@ -1,9 +1,13 @@
 import Link from "next/link";
 import Navbar from "./navbar";
 
-export default function SectionLayout({ children }: { children: React.ReactNode }) {
+export default function SectionLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <main>
+    <main id="main-content">
       <Navbar />
       {children}
       <div className="pageFoot wrap">

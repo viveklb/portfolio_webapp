@@ -65,13 +65,19 @@ const trustNotes = [
 ];
 export const metadata = {
   title: "Full-Stack Web Developer & Academic Project Specialist in Solapur",
-  description: "Hire Vivek Bharamshetti for MERN and Next.js web development, M.Tech research projects and B.E. final-year projects with source code and deployment support.",
+  description:
+    "Hire Vivek Bharamshetti for MERN and Next.js web development, M.Tech research projects and B.E. final-year projects with source code and deployment support.",
   alternates: { canonical: "/dashboard" },
-  openGraph: { url: "/dashboard", title: "Full-Stack Web Developer in Solapur | Vivek Bharamshetti", description: "Web development and complete academic project solutions for students, startups and businesses." },
+  openGraph: {
+    url: "/dashboard",
+    title: "Full-Stack Web Developer in Solapur | Vivek Bharamshetti",
+    description:
+      "Web development and complete academic project solutions for students, startups and businesses.",
+  },
 };
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <Navbar />
       <section className="hero wrap" id="home">
         <div className="heroCopy">
@@ -85,6 +91,20 @@ export default function Home() {
             Web developer & academic project specialist creating powerful,
             polished experiences — from first idea to final deployment.
           </p>
+          <div className="heroSignals" aria-label="Development capabilities">
+            <span>
+              <b>Next.js 16</b>
+              production ready
+            </span>
+            <span>
+              <b>Full-stack</b>
+              design to deployment
+            </span>
+            <span>
+              <b>Direct support</b>
+              clear project guidance
+            </span>
+          </div>
           <p className="actions">
             <Link className="btn" href="/work">
               Explore my work <A />
@@ -160,7 +180,14 @@ export default function Home() {
             (x, i) => (
               <article key={x}>
                 <span>0{i + 1}</span>
-                <div className={"visual v" + i}>&lt;/&gt;</div>
+                <div className={"visual v" + i}>
+                  <span className="visualBadge">
+                    {i === 0 ? "</>" : i === 1 ? "AI" : "B.E."}
+                  </span>
+                  <span className="visualLine visualLineWide" />
+                  <span className="visualLine" />
+                  <span className="visualLine visualLineShort" />
+                </div>
                 <small>
                   {i === 0
                     ? "NEXT.JS · NODE"
@@ -176,7 +203,9 @@ export default function Home() {
                       ? "Advanced academic projects with complete source code and guidance."
                       : "Practical final-year solutions, built and documented end to end."}
                 </p>
-                <Link className="cardAction" href="/work">View details ↗</Link>
+                <Link className="cardAction" href="/work">
+                  View details ↗
+                </Link>
               </article>
             ),
           )}
@@ -200,7 +229,9 @@ export default function Home() {
                   <span>Starting at</span>
                   <b>{s.price}</b>
                 </div>
-                <Link href={`/contact?type=${encodeURIComponent(s.name)}#project-requirements`}>
+                <Link
+                  href={`/contact?type=${encodeURIComponent(s.name)}#project-requirements`}
+                >
                   Discuss your project <A />
                 </Link>
               </article>

@@ -66,9 +66,15 @@ const work = [
 ];
 export const metadata = {
   title: "Web Development & Academic Project Portfolio",
-  description: "Explore full-stack web apps, M.Tech research projects, B.E. final-year software, dashboards, APIs and deployment work by Vivek Bharamshetti.",
+  description:
+    "Explore full-stack web apps, M.Tech research projects, B.E. final-year software, dashboards, APIs and deployment work by Vivek Bharamshetti.",
   alternates: { canonical: "/work" },
-  openGraph: { url: "/work", title: "Web & Academic Project Portfolio", description: "A selection of full-stack applications and engineering projects built for real-world use." },
+  openGraph: {
+    url: "/work",
+    title: "Web & Academic Project Portfolio",
+    description:
+      "A selection of full-stack applications and engineering projects built for real-world use.",
+  },
 };
 export default function Work() {
   return (
@@ -85,35 +91,55 @@ export default function Work() {
           engineering.
         </p>
       </header>
-      <section className="currentWork wrap" aria-labelledby="current-projects-title">
+      <section
+        className="currentWork wrap"
+        aria-labelledby="current-projects-title"
+      >
         <div className="currentWorkHeading">
           <div>
             <small>RECENTLY BUILT</small>
-            <h2 id="current-projects-title">Current <em>projects.</em></h2>
+            <h2 id="current-projects-title">
+              Current <em>projects.</em>
+            </h2>
           </div>
           <p>
-            Active product work across AI-assisted monitoring, sensor fusion
-            and career technology.
+            Active product work across AI-assisted monitoring, sensor fusion and
+            career technology.
           </p>
         </div>
         <div className="currentProjectsGrid">
           {currentProjects.map((project, index) => (
-            <article className={index === 0 ? "currentProject featuredProject" : "currentProject"} key={project.name}>
+            <article
+              className={
+                index === 0
+                  ? "currentProject featuredProject"
+                  : "currentProject"
+              }
+              key={project.name}
+            >
               <div className="projectScreenshot">
                 <Image
                   src={project.image}
                   alt={project.alt}
                   fill
                   placeholder="blur"
-                  sizes={index === 0 ? "(max-width: 800px) 100vw, 1180px" : "(max-width: 800px) 100vw, 580px"}
+                  sizes={
+                    index === 0
+                      ? "(max-width: 800px) 100vw, 1180px"
+                      : "(max-width: 800px) 100vw, 580px"
+                  }
                 />
               </div>
               <div className="projectDetails">
-                <span>0{index + 1} / {project.name}</span>
+                <span>
+                  0{index + 1} / {project.name}
+                </span>
                 <small>{project.tag}</small>
                 <h3>{project.title}</h3>
                 <p>{project.text}</p>
-                <Link href={`/contact?type=${encodeURIComponent(project.title)}#project-requirements`}>
+                <Link
+                  href={`/contact?type=${encodeURIComponent(project.title)}#project-requirements`}
+                >
                   Build a project like this ↗
                 </Link>
               </div>
@@ -125,11 +151,21 @@ export default function Work() {
         {work.map((x, i) => (
           <article key={x.name}>
             <span>0{i + 1}</span>
-            <div className={"visual v" + (i % 3)}>&lt;/&gt;</div>
+            <div className={"visual v" + (i % 3)}>
+              <span className="visualBadge">
+                {i % 3 === 0 ? "</>" : i % 3 === 1 ? "AI" : "UI"}
+              </span>
+              <span className="visualLine visualLineWide" />
+              <span className="visualLine" />
+              <span className="visualLine visualLineShort" />
+            </div>
             <small>{x.tag}</small>
             <h3>{x.name}</h3>
             <p>{x.text}</p>
-            <Link className="cardAction" href={`/contact?type=${encodeURIComponent(x.name)}#project-requirements`}>
+            <Link
+              className="cardAction"
+              href={`/contact?type=${encodeURIComponent(x.name)}#project-requirements`}
+            >
               Start this project ↗
             </Link>
           </article>

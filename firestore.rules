@@ -2,9 +2,8 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /projectEnquiries/{enquiryId} {
-      allow create: if
-        request.resource.data.keys().hasAll([
+    function hasValidEnquiryFields() {
+      return request.resource.data.keys().hasAll([
           'clientName', 'projectName', 'branch', 'phone', 'email',
           'projectType', 'deadline', 'requirements', 'status', 'source',
           'createdAt'
@@ -13,7 +12,11 @@ service cloud.firestore {
           'clientName', 'projectName', 'branch', 'phone', 'email',
           'projectType', 'deadline', 'requirements', 'status', 'source',
           'createdAt'
-        ]) &&
+        ]);
+    }
+
+    function hasValidEnquiryValues() {
+      return
         request.resource.data.clientName is string &&
         request.resource.data.clientName.size() >= 2 &&
         request.resource.data.clientName.size() <= 100 &&
@@ -27,6 +30,7 @@ service cloud.firestore {
         request.resource.data.phone.size() >= 7 &&
         request.resource.data.phone.size() <= 20 &&
         request.resource.data.email is string &&
+        request.resource.data.email.size() >= 3 &&
         request.resource.data.email.size() <= 160 &&
         request.resource.data.projectType in [
           'M.Tech Project', 'B.E. Project', 'Web Development', 'Other'
@@ -39,6 +43,10 @@ service cloud.firestore {
         request.resource.data.status == 'new' &&
         request.resource.data.source == 'website-contact' &&
         request.resource.data.createdAt == request.time;
+    }
+
+    match /projectEnquiries/{enquiryId} {
+      allow create: if hasValidEnquiryFields() && hasValidEnquiryValues();
 
       allow read, update, delete: if false;
     }
