@@ -1,24 +1,26 @@
-﻿import SectionLayout from "../section-layout";
+import SectionLayout from "../section-layout";
 export const metadata = {
-  title: "About Vivek Bharamshetti - Software Developer",
-  description: "Meet Vivek Bharamshetti, a Solapur-based software developer experienced in MERN, Next.js, Firebase, REST APIs and academic project development.",
+  title: "About Vivek Bharamshetti, Vaishnavi Yelapure & Aditya Rachatte - Software Engineering Team",
+  description: "Learn about Vivek Bharamshetti, Vaishnavi Yelapure, and Aditya Rachatte. Solapur-based full-stack engineering team building web applications, Samarth Collection, CrackMNC platform, M.Tech projects, and IEEE research papers.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about", title: "About Vivek Bharamshetti", description: "Software developer, MERN specialist and creator of 150+ web and academic projects." },
+  openGraph: {
+    url: "/about",
+    title: "About Vivek Bharamshetti, Vaishnavi Yelapure & Aditya Rachatte",
+    description: "Full-stack software engineering team specializing in web development, M.Tech projects, and research paper publication.",
+  },
 };
 export default function About() {
   return (
     <SectionLayout>
       <header className="pageHero wrap">
-        <small>01 / ABOUT ME</small>
+        <small>01 / ABOUT US & OUR TEAM</small>
         <h1>
           Code with purpose.
           <br />
           <em>Built with precision.</em>
         </h1>
         <p>
-          I’m a web developer and academic project specialist who turns complex
-          ideas into clean, usable products. Every build receives thoughtful
-          design, solid engineering and clear communication.
+          Founded by <strong>Vivek Laxman Bharamshetti</strong> alongside core developers <strong>Vaishnavi Yelapure</strong> and <strong>Aditya Rachatte</strong>, we build web applications, client solutions, M.Tech research projects, and research paper publications.
         </p>
       </header>
       <section className="aboutDetail wrap">
@@ -35,6 +37,32 @@ export default function About() {
           <span>Degree levels supported</span>
         </div>
       </section>
+
+      {/* Team Showcase for Search Indexing */}
+      <section className="teamSection section wrap" style={{ borderRadius: "24px", margin: "40px auto" }} id="team">
+        <small style={{ color: "#8065ff", fontWeight: 700 }}>THE ENGINEERS BEHIND VIVEK SOFTWARES</small>
+        <h2 style={{ color: "#ffffff", marginTop: "8px", marginBottom: "32px" }}>
+          Meet the <em>developers.</em>
+        </h2>
+        <div className="teamGrid">
+          <article className="teamMember">
+            <span className="teamNumber">01</span>
+            <h3>Vivek Laxman Bharamshetti</h3>
+            <p>Owner · Full-Stack & DevOps Specialist</p>
+          </article>
+          <article className="teamMember">
+            <span className="teamNumber">02</span>
+            <h3>Vaishnavi Yelapure</h3>
+            <p>Frontend Developer · UI/UX Specialist · System Design</p>
+          </article>
+          <article className="teamMember">
+            <span className="teamNumber">03</span>
+            <h3>Aditya Rachatte</h3>
+            <p>Senior Developer · DevOps Engineer · Cloud Infrastructure</p>
+          </article>
+        </div>
+      </section>
+
       <section className="pageCopy wrap">
         <h2>
           Ideas become useful
@@ -42,10 +70,8 @@ export default function About() {
           <em>when they work.</em>
         </h2>
         <p>
-          I combine modern web technologies with a practical development
-          process. Whether it is a business website, an M.Tech research project,
-          or a B.E. final-year project, my focus stays the same: understandable
-          code, polished design, and a result you can confidently present.
+          We combine modern web technologies with a practical engineering process.
+          Whether it is a client store like <strong>Samarth Collection</strong>, a placement platform like <strong>CrackMNC</strong>, an <strong>M.Tech research project</strong>, or an <strong>IEEE Research Paper</strong> publication, our focus stays the same: understandable code, polished design, and results you can present confidently.
         </p>
       </section>
       <section className="ownerStory wrap">
@@ -55,7 +81,7 @@ export default function About() {
         </div>
         <article className="experienceCard">
           <div><span>Aug 2023 - Present</span><h3>Software Developer</h3><p>N. B. Navale Sinhgad College of Engineering, Kegaon, Solapur</p></div>
-          <p>Developing full-stack MERN applications and REST APIs for secure authentication, data management and real-time product features.</p>
+          <p>Developing full-stack MERN applications, Next.js portals, and REST APIs for secure authentication, data management, and real-time product features.</p>
         </article>
       </section>
       <section className="ownerDetails wrap">
@@ -68,15 +94,15 @@ export default function About() {
         <div className="detailColumn">
           <small>TECHNICAL TOOLKIT</small>
           <div className="skillCloud">
-            {["JavaScript", "Python", "React.js", "Redux", "Node.js", "MongoDB", "REST APIs", "Firebase", "Git", "GitHub", "ESP32", "Arduino"].map((skill) => <span key={skill}>{skill}</span>)}
+            {["JavaScript", "Python", "React.js", "Next.js", "Redux", "Node.js", "MongoDB", "REST APIs", "Firebase", "DevOps", "Git", "GitHub", "ESP32", "Arduino"].map((skill) => <span key={skill}>{skill}</span>)}
           </div>
         </div>
       </section>
       <section className="cvProjects wrap">
         <small>FEATURED PROJECTS</small>
         <div>
-          <article><span>01</span><h3>Mock Test App</h3><p>An online examination platform built with the MERN stack and Firebase, including question management, automated evaluation and student performance monitoring.</p></article>
-          <article><span>02</span><h3>Faculty Feedback System</h3><p>A scalable MERN and Firebase feedback platform deployed across local and cloud servers, with PM2 process management.</p></article>
+          <article><span>01</span><h3>Samarth Collection & CrackMNC Platform</h3><p>Client e-commerce web applications and MNC recruitment career preparation portals with mock interview simulators.</p></article>
+          <article><span>02</span><h3>M.Tech Projects & IEEE Research Papers</h3><p>Postgraduate research systems combining computer vision, IoT telemetry, algorithm design, and journal paper publication support.</p></article>
         </div>
         <p className="profileLinks">
           <a href="https://www.linkedin.com/in/vivek-bharamshetti-1b9892341" target="_blank" rel="noreferrer">LinkedIn ↗</a>

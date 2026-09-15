@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Google_Sans, Roboto } from "next/font/google";
-import { defaultDescription, ownerName, siteName, siteUrl } from "@/lib/seo";
+import { defaultDescription, defaultKeywords, ownerName, siteName, siteUrl } from "@/lib/seo";
 import "./globals.css";
 import "./light-theme.css";
 import "./design-refresh.css";
@@ -30,20 +30,16 @@ export const metadata: Metadata = {
   },
   description: defaultDescription,
   applicationName: siteName,
-  authors: [{ name: ownerName, url: "/about" }],
+  authors: [
+    { name: "Vivek Laxman Bharamshetti", url: `${siteUrl}/about` },
+    { name: "Vaishnavi Yelapure", url: `${siteUrl}/dashboard#team` },
+    { name: "Aditya Rachatte", url: `${siteUrl}/dashboard#team` },
+  ],
   creator: ownerName,
-  publisher: ownerName,
+  publisher: siteName,
   category: "technology",
   formatDetection: { email: false, address: false, telephone: false },
-  keywords: [
-    "web developer in Solapur",
-    "MERN stack developer",
-    "M.Tech project developer",
-    "B.E. final year projects",
-    "Next.js developer",
-    "React developer",
-    "academic project development",
-  ],
+  keywords: defaultKeywords,
   alternates: { canonical: "/dashboard" },
   openGraph: {
     type: "website",
@@ -81,11 +77,13 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": `${siteUrl}/#person`,
-      name: ownerName,
-      url: siteUrl,
+      "@id": `${siteUrl}/#vivek-bharamshetti`,
+      name: "Vivek Laxman Bharamshetti",
+      alternateName: ["Vivek Bharamshetti", "Vivek"],
+      url: `${siteUrl}/about`,
       image: `${siteUrl}/vivek-square-portrait.png`,
-      jobTitle: "Software Developer",
+      jobTitle: "Owner & Full-Stack Developer",
+      worksFor: { "@id": `${siteUrl}/#business` },
       sameAs: [
         "https://www.linkedin.com/in/vivek-bharamshetti-1b9892341",
         "https://github.com/viveklb",
@@ -96,14 +94,44 @@ const structuredData = {
         "React",
         "Node.js",
         "MongoDB",
-        "Firebase",
-        "REST APIs",
+        "DevOps",
+        "M.Tech Projects",
+        "IEEE Research Papers",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#vaishnavi-yelapure`,
+      name: "Vaishnavi Yelapure",
+      jobTitle: "Frontend Developer & UI/UX Specialist",
+      worksFor: { "@id": `${siteUrl}/#business` },
+      knowsAbout: [
+        "Frontend Development",
+        "UI/UX Design",
+        "System Design",
+        "React",
+        "Next.js",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#aditya-rachatte`,
+      name: "Aditya Rachatte",
+      jobTitle: "Senior Developer & DevOps Engineer",
+      worksFor: { "@id": `${siteUrl}/#business` },
+      knowsAbout: [
+        "DevOps",
+        "Senior Web Development",
+        "Cloud Infrastructure",
+        "Docker",
+        "CI/CD Pipelines",
       ],
     },
     {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#business`,
-      name: siteName,
+      name: "Vivek Softwares (Vivek.dev)",
+      alternateName: "Vivek Softwares",
       url: siteUrl,
       image: `${siteUrl}/vivek-square-portrait.png`,
       email: "bharamshettivivek71@gmail.com",
@@ -115,12 +143,19 @@ const structuredData = {
         addressRegion: "Maharashtra",
         addressCountry: "IN",
       },
-      founder: { "@id": `${siteUrl}/#person` },
+      founder: { "@id": `${siteUrl}/#vivek-bharamshetti` },
+      employee: [
+        { "@id": `${siteUrl}/#vaishnavi-yelapure` },
+        { "@id": `${siteUrl}/#aditya-rachatte` },
+      ],
       areaServed: "India",
       serviceType: [
         "Web Development",
+        "Samarth Collection E-Commerce",
+        "CrackMNC Platform",
         "M.Tech Project Development",
-        "B.E. Final Year Project Development",
+        "B.E. Final Year Projects",
+        "Research Papers & IEEE Publications",
       ],
     },
   ],
@@ -132,7 +167,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-IN" className={`${googleSans.variable} ${roboto.variable}`}>
+    <html
+      lang="en-IN"
+      className={`${googleSans.variable} ${roboto.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <a className="skipLink" href="#main-content">
           Skip to content

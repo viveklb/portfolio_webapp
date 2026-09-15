@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Navbar from "../navbar";
 import Link from "next/link";
 const A = () => <span>↗</span>;
@@ -121,28 +121,85 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className="photo">
-          <div className="ring" />
-          <div className="portraitCrop squarePortrait">
-            <Image
-              src="/vivek-square-portrait.png"
-              alt="Vivek, web and academic project developer"
-              fill
-              preload
-              sizes="(max-width:800px) 82vw,390px"
-            />
+        <div className="heroClientsShowcase">
+          <div className="clientCardHeader">
+            <small>FEATURED CLIENTS & PORTFOLIO</small>
+            <h3>Real-world Deliverables</h3>
           </div>
-          <aside>
-            <strong>150+</strong> PROJECTS
-            <br />
-            COMPLETED
-          </aside>
+          <div className="heroClientsGrid">
+            <Link href="#clients" className="heroClientCard featuredClient">
+              <div className="clientLogoWrap">
+                <Image
+                  src="/swami_samarth.png"
+                  alt="Samarth Collection"
+                  width={250}
+                  height={150}
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="clientMeta">
+                <strong>Samarth Collection</strong>
+                <span>E-Commerce Store & Client Portal</span>
+              </div>
+            </Link>
+
+            <Link href="#clients" className="heroClientCard">
+              <div className="clientIconBadge">🚀</div>
+              <div className="clientMeta">
+                <strong>CrackMNC Platform</strong>
+                <span>Career Preparation & Recruitment</span>
+              </div>
+            </Link>
+
+            <Link href="#clients" className="heroClientCard">
+              <div className="clientIconBadge">🎓</div>
+              <div className="clientMeta">
+                <strong>M-Tech Projects</strong>
+                <span>AI Vision, IoT & Telemetry Systems</span>
+              </div>
+            </Link>
+
+            <Link href="#clients" className="heroClientCard">
+              <div className="clientIconBadge">📜</div>
+              <div className="clientMeta">
+                <strong>Research Papers</strong>
+                <span>IEEE & Journal Publication Support</span>
+              </div>
+            </Link>
+          </div>
+          <div className="heroClientsProof">
+            <strong>150+</strong> PROJECTS DELIVERED TO CLIENTS & STUDENTS
+          </div>
         </div>
       </section>
       <div className="strip">
-        WEB DEVELOPMENT　✦　M.TECH PROJECTS　✦　B.E. PROJECTS　✦　SOURCE
-        CODE　✦　DEPLOYMENT
+        CLIENTS & PROJECTS　✦　SAMARTH COLLECTION　✦　CRACKMNC　✦　M.TECH PROJECTS　✦　RESEARCH PAPERS
       </div>
+      <section className="teamSection section" aria-labelledby="team-title">
+        <div className="wrap">
+          <small>THE PEOPLE BEHIND THE WORK</small>
+          <h2 id="team-title">
+            Meet the <em>developers.</em>
+          </h2>
+          <div className="teamGrid">
+            <article className="teamMember">
+              <span className="teamNumber">01</span>
+              <h3>Aditya Rachatte</h3>
+              <p>Sr. Developer · DevOps</p>
+            </article>
+            <article className="teamMember">
+              <span className="teamNumber">02</span>
+              <h3>Vaishanvi Yelapure</h3>
+              <p>Frontend Developer · UI/UX · System Design</p>
+            </article>
+            <article className="teamMember">
+              <span className="teamNumber">03</span>
+              <h3>Vivek Bharamshetti</h3>
+              <p>Owner · DevOps</p>
+            </article>
+          </div>
+        </div>
+      </section>
       <section className="about wrap section" id="about">
         <div>
           <small>01 / ABOUT ME</small>
@@ -171,44 +228,261 @@ export default function Home() {
         </div>
       </section>
       <section className="section wrap" id="work">
-        <small>02 / SELECTED EXPERTISE</small>
+        <small>02 / FEATURED CLIENTS & DOMAINS</small>
         <h2>
-          What I <em>build.</em>
+          Clients & <em>core expertise.</em>
         </h2>
         <div className="cards">
-          {["Full-stack Web Apps", "M.Tech Projects", "B.E. Projects"].map(
-            (x, i) => (
-              <article key={x}>
-                <span>0{i + 1}</span>
-                <div className={"visual v" + i}>
-                  <span className="visualBadge">
-                    {i === 0 ? "</>" : i === 1 ? "AI" : "B.E."}
+          {[
+            {
+              title: "Samarth Collection",
+              subtitle: "CLIENT E-COMMERCE & PORTAL",
+              tag: "RETAIL · BRANDING · NEXT.JS",
+              desc: "Custom web app and catalog portal built for Samarth Collection (समर्थ कलेक्शन).",
+              icon: "🛍️",
+            },
+            {
+              title: "CrackMNC Platform",
+              subtitle: "CAREER & RECRUITMENT",
+              tag: "DASHBOARD · MOCK INTERVIEWS",
+              desc: "Comprehensive placement preparation workspace for software engineers.",
+              icon: "🚀",
+            },
+            {
+              title: "M.Tech Projects",
+              subtitle: "ADVANCED AI & ENGINEERING",
+              tag: "RESEARCH · HARDWARE · DEEP LEARNING",
+              desc: "Postgraduate degree projects built with complete source code & thesis guidance.",
+              icon: "🎓",
+            },
+            {
+              title: "Research Papers",
+              subtitle: "IEEE & JOURNAL PUBLICATIONS",
+              tag: "IEEE · SCOPUS · ALGORITHMS",
+              desc: "Academic paper formulation, MATLAB/Python simulations, and publication support.",
+              icon: "📜",
+            },
+          ].map((x, i) => (
+            <article key={x.title}>
+              <span>0{i + 1}</span>
+              <div className={"visual v" + (i % 3)}>
+                <span className="visualBadge">{x.icon}</span>
+                <span className="visualLine visualLineWide" />
+                <span className="visualLine" />
+                <span className="visualLine visualLineShort" />
+              </div>
+              <small>{x.tag}</small>
+              <h3>{x.title}</h3>
+              <p>{x.desc}</p>
+              <Link className="cardAction" href="/work">
+                View details ↗
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Showcase Grid for Clients & Major Deliverables */}
+      <section className="currentWork wrap" id="clients" style={{ marginTop: "40px" }}>
+        <div className="currentWorkHeading">
+          <div>
+            <small>CLIENTS & FEATURED DELIVERABLES</small>
+            <h2>
+              Featured <em>portfolio.</em>
+            </h2>
+          </div>
+          <p>
+            Real-world client applications, specialized products, M.Tech systems, and publication work.
+          </p>
+        </div>
+        <div className="currentProjectsGrid">
+          <article className="currentProject featuredProject">
+            <div
+              className="projectScreenshot"
+              style={{
+                position: "relative",
+                width: "100%",
+                minHeight: "320px",
+                background:
+                  "linear-gradient(135deg, #ffffff 0%, #edf4ff 50%, #dce9fe 100%)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "36px 24px",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-40px",
+                  right: "-40px",
+                  width: "200px",
+                  height: "200px",
+                  borderRadius: "50%",
+                  background: "rgba(21, 94, 239, 0.08)",
+                  filter: "blur(24px)",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "-40px",
+                  left: "-40px",
+                  width: "200px",
+                  height: "200px",
+                  borderRadius: "50%",
+                  background: "rgba(10, 47, 137, 0.08)",
+                  filter: "blur(24px)",
+                }}
+              />
+
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "92%",
+                  maxWidth: "480px",
+                  padding: "36px 44px",
+                  borderRadius: "26px",
+                  background: "#ffffff",
+                  boxShadow:
+                    "0 24px 54px rgba(24, 59, 112, 0.14), 0 0 0 1px rgba(21, 94, 239, 0.12)",
+                  textAlign: "center",
+                }}
+              >
+                <Image
+                  src="/samarth-collection-logo.png"
+                  alt="Samarth Collection Company Logo"
+                  width={380}
+                  height={170}
+                  style={{
+                    objectFit: "contain",
+                    width: "100%",
+                    maxWidth: "360px",
+                    height: "auto",
+                    maxHeight: "150px",
+                  }}
+                />
+                <div
+                  style={{
+                    marginTop: "20px",
+                    display: "flex",
+                    gap: "10px",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: "20px",
+                      background: "#ebf3ff",
+                      color: "#0f49c5",
+                      fontSize: "13px",
+                      fontWeight: "700",
+                    }}
+                  >
+                    E-Commerce Store
                   </span>
-                  <span className="visualLine visualLineWide" />
-                  <span className="visualLine" />
-                  <span className="visualLine visualLineShort" />
+                  <span
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: "20px",
+                      background: "#f1f5f9",
+                      color: "#475569",
+                      fontSize: "13px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Client Web App
+                  </span>
                 </div>
-                <small>
-                  {i === 0
-                    ? "NEXT.JS · NODE"
-                    : i === 1
-                      ? "RESEARCH · DEVELOPMENT"
-                      : "WEB · SOFTWARE"}
-                </small>
-                <h3>{x}</h3>
-                <p>
-                  {i === 0
-                    ? "Fast, responsive products built for real-world users."
-                    : i === 1
-                      ? "Advanced academic projects with complete source code and guidance."
-                      : "Practical final-year solutions, built and documented end to end."}
-                </p>
-                <Link className="cardAction" href="/work">
-                  View details ↗
-                </Link>
-              </article>
-            ),
-          )}
+              </div>
+            </div>
+            <div className="projectDetails">
+              <span>01 / CLIENT SHOWCASE</span>
+              <small>E-COMMERCE · CLIENT PORTAL · BRANDING</small>
+              <h3>Samarth Collection (समर्थ कलेक्शन)</h3>
+              <p>
+                Custom digital commerce store and inventory management portal developed for Samarth Collection, streamlining product cataloging, order tracking, and client sales.
+              </p>
+              <Link href="/contact?type=Samarth%20Collection%20Client%20Project#project-requirements">
+                Build a client app like this ↗
+              </Link>
+            </div>
+          </article>
+
+          <article className="currentProject">
+            <div className="projectScreenshot">
+              <Image
+                src="/projects/crackmnc-career-platform.png"
+                alt="CrackMNC Career Preparation Platform"
+                fill
+                sizes="(max-width: 800px) 100vw, 580px"
+              />
+            </div>
+            <div className="projectDetails">
+              <span>02 / FEATURED PLATFORM</span>
+              <small>CAREER PLATFORM · RECRUITMENT · DASHBOARD</small>
+              <h3>CrackMNC Career Platform</h3>
+              <p>
+                Complete career placement ecosystem featuring mock interview simulators, resume tools, MNC question banks, and interactive coding practice environments.
+              </p>
+              <Link href="/work">
+                View platform details ↗
+              </Link>
+            </div>
+          </article>
+
+          <article className="currentProject">
+            <div className="projectScreenshot">
+              <Image
+                src="/projects/plantvision-growth-monitoring.png"
+                alt="PlantVision M-Tech AI Growth Monitoring Project"
+                fill
+                sizes="(max-width: 800px) 100vw, 580px"
+              />
+            </div>
+            <div className="projectDetails">
+              <span>03 / ACADEMIC ENGINEERING</span>
+              <small>M.TECH PROJECTS · AI VISION · IOT TELEMETRY</small>
+              <h3>M-Tech Engineering Projects</h3>
+              <p>
+                Advanced postgraduate research systems combining deep learning, sensor fusion, image processing, and telemetry with full source code & thesis documentation.
+              </p>
+              <Link href="/services#pricing">
+                Explore M-Tech projects ↗
+              </Link>
+            </div>
+          </article>
+
+          <article className="currentProject">
+            <div className="projectScreenshot">
+              <Image
+                src="/projects/uav-radar-sensor-fusion.png"
+                alt="Research Papers & IEEE Publications"
+                fill
+                sizes="(max-width: 800px) 100vw, 580px"
+              />
+            </div>
+            <div className="projectDetails">
+              <span>04 / RESEARCH & PUBLICATIONS</span>
+              <small>RESEARCH PAPERS · IEEE · SCI / SCOPUS JOURNALS</small>
+              <h3>Research Papers & Publications</h3>
+              <p>
+                End-to-end research paper writing, algorithm formulation, MATLAB/Python simulations, and publication guidance for IEEE and Scopus indexed journals.
+              </p>
+              <Link href="/contact?type=Research%20Paper%20Support#project-requirements">
+                Publish a research paper ↗
+              </Link>
+            </div>
+          </article>
         </div>
       </section>
       <section className="services section" id="services">

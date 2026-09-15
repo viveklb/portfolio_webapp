@@ -18,6 +18,7 @@ export default function ProjectForm({
 }) {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   async function submitProject(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,26 +42,52 @@ export default function ProjectForm({
 
     setSubmitState("submitting");
     setMessage("");
+    setWhatsappUrl("");
+
+    const payload = {
+      clientName: value(data, "clientName"),
+      projectName: value(data, "projectName"),
+      branch: value(data, "branch"),
+      phone: value(data, "phone"),
+      email: value(data, "email").toLowerCase(),
+      projectType: value(data, "projectType"),
+      deadline: value(data, "deadline"),
+      requirements: value(data, "requirements"),
+      status: "new",
+      source: "website-contact",
+    };
 
     try {
       await addDoc(collection(getFirebaseDb(), "projectEnquiries"), {
-        clientName: value(data, "clientName"),
-        projectName: value(data, "projectName"),
-        branch: value(data, "branch"),
-        phone: value(data, "phone"),
-        email: value(data, "email").toLowerCase(),
-        projectType: value(data, "projectType"),
-        deadline: value(data, "deadline"),
-        requirements: value(data, "requirements"),
-        status: "new",
-        source: "website-contact",
+        ...payload,
         createdAt: serverTimestamp(),
       });
+
+      // Dispatch server-side phone notification trigger
+      fetch("/api/notify-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).catch((err) => console.error("Notification trigger error:", err));
+
+      // Build instant WhatsApp notification URL for owner number (+91 7083232813)
+      const waMessage =
+        `🚨 *NEW PROJECT ENQUIRY*\n` +
+        `👤 *Name:* ${payload.clientName}\n` +
+        `📞 *Phone:* ${payload.phone}\n` +
+        `📧 *Email:* ${payload.email}\n` +
+        `📌 *Project:* ${payload.projectName} (${payload.projectType})\n` +
+        `🏢 *Branch/Company:* ${payload.branch}\n` +
+        `📅 *Deadline:* ${payload.deadline || "Flexible"}\n` +
+        `💬 *Requirements:* ${payload.requirements}`;
+
+      const generatedWaUrl = `https://wa.me/917083232813?text=${encodeURIComponent(waMessage)}`;
+      setWhatsappUrl(generatedWaUrl);
 
       form.reset();
       setSubmitState("success");
       setMessage(
-        "Thanks — your project requirements were sent successfully. I’ll contact you soon.",
+        "Thanks! Your enquiry has been received and sent to Vivek (+91 7083232813).",
       );
     } catch (error) {
       setSubmitState("error");
@@ -182,10 +209,32 @@ export default function ProjectForm({
           Website
           <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
-        <div className="formSubmit fullField">
+        <div className="formSubmit fullField" style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-start" }}>
           <button className="btn" disabled={isSubmitting} type="submit">
             {isSubmitting ? "Sending…" : "Send project requirements ↗"}
           </button>
+          {submitState === "success" && whatsappUrl && (
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 20px",
+                borderRadius: "14px",
+                background: "#25D366",
+                color: "#ffffff",
+                fontWeight: "700",
+                fontSize: "14px",
+                textDecoration: "none",
+                boxShadow: "0 8px 24px rgba(37, 211, 102, 0.25)",
+              }}
+            >
+              💬 Send instant WhatsApp alert to Vivek (+91 7083232813) ↗
+            </a>
+          )}
           <p className={`formMessage ${submitState}`} aria-live="polite">
             {message}
           </p>

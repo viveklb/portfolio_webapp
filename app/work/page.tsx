@@ -1,26 +1,20 @@
-﻿import SectionLayout from "../section-layout";
+import SectionLayout from "../section-layout";
 import Link from "next/link";
 import Image from "next/image";
+import samarthLogo from "@/public/swami_samarth.png";
 import plantVisionImage from "@/public/projects/plantvision-growth-monitoring.png";
 import uavRadarImage from "@/public/projects/uav-radar-sensor-fusion.png";
 import crackMncImage from "@/public/projects/crackmnc-career-platform.png";
 
 const currentProjects = [
   {
-    name: "PlantVision",
-    title: "Advanced Plant Growth Monitoring System",
-    tag: "AI VISION · IOT · ESP TELEMETRY",
-    text: "A plant-health monitoring workspace that combines image analysis, live ESP telemetry and scan history to track growth, moisture and environmental conditions.",
-    image: plantVisionImage,
-    alt: "PlantVision advanced plant growth monitoring dashboard with image analysis and health metrics",
-  },
-  {
-    name: "UAV Radar",
-    title: "Radar Sensor Fusion & Tracking",
-    tag: "OPENCV · YOLO · SENSOR FUSION",
-    text: "A real-time radar interface that fuses radar-wave scanning with computer-vision tracking for UAV detection, target locking and trajectory monitoring.",
-    image: uavRadarImage,
-    alt: "UAV radar sensor fusion dashboard showing live radar scanning and target configuration",
+    name: "Samarth Collection",
+    title: "Samarth Collection E-Commerce & Retail Portal",
+    tag: "CLIENT SHOWCASE · E-COMMERCE · RETAIL",
+    text: "Custom digital commerce portal for Samarth Collection (समर्थ कलेक्शन) featuring product cataloging, online sales interface, order tracking, and inventory tools.",
+    image: samarthLogo,
+    alt: "Samarth Collection store logo and client project banner",
+    isLogo: true,
   },
   {
     name: "CrackMNC",
@@ -30,38 +24,54 @@ const currentProjects = [
     image: crackMncImage,
     alt: "CrackMNC career preparation dashboard with interview, resume and application tools",
   },
+  {
+    name: "PlantVision M-Tech",
+    title: "Advanced Plant Growth Monitoring System",
+    tag: "M-TECH PROJECT · AI VISION · IOT",
+    text: "A research-grade M-Tech monitoring workspace combining image analysis, live ESP telemetry and scan history to track growth and health metrics.",
+    image: plantVisionImage,
+    alt: "PlantVision advanced plant growth monitoring dashboard with image analysis and health metrics",
+  },
+  {
+    name: "UAV Radar Research Paper",
+    title: "Radar Sensor Fusion & Research Paper",
+    tag: "RESEARCH PAPERS · IEEE · OPENCV",
+    text: "A real-time radar interface fusing sensor data with computer-vision tracking, packaged with complete research paper documentation and simulation models.",
+    image: uavRadarImage,
+    alt: "UAV radar sensor fusion research paper and simulation dashboard",
+  },
 ];
 
 const work = [
   {
-    name: "Full-stack Web Apps",
-    tag: "NEXT.JS · NODE",
-    text: "Fast, responsive websites and applications built for real-world users.",
+    name: "Samarth Collection & Clients",
+    tag: "CLIENT WEB APPS · E-COMMERCE",
+    text: "Custom business portals, retail platforms, and brand solutions for real-world clients.",
+  },
+  {
+    name: "CrackMNC Platform",
+    tag: "CAREER PLATFORM · DASHBOARDS",
+    text: "Placement portals, interview suites, and interactive recruitment dashboards.",
   },
   {
     name: "M.Tech Projects",
-    tag: "RESEARCH · DEVELOPMENT",
-    text: "Advanced academic projects with complete source code and implementation guidance.",
+    tag: "RESEARCH · DEVELOPMENT · AI",
+    text: "Advanced postgraduate research projects with complete source code, hardware integration, and thesis guidance.",
+  },
+  {
+    name: "Research Papers",
+    tag: "IEEE · SCI/SCOPUS · PUBLICATION",
+    text: "Paper writing, algorithm formulation, simulation graphs, and journal publication assistance.",
   },
   {
     name: "B.E. Projects",
-    tag: "WEB · SOFTWARE",
-    text: "Practical final-year solutions, built and documented from idea to deployment.",
+    tag: "WEB · SOFTWARE · DEMO",
+    text: "Practical final-year engineering solutions, built, documented, and tested from idea to deployment.",
   },
   {
-    name: "Dashboards & Portals",
-    tag: "DATA · UI/UX",
-    text: "Clear, useful interfaces that turn complex information into confident decisions.",
-  },
-  {
-    name: "API Development",
-    tag: "BACKEND · DATABASE",
-    text: "Secure and maintainable services that connect applications and data.",
-  },
-  {
-    name: "Deployment Support",
-    tag: "CLOUD · DELIVERY",
-    text: "Production setup and guidance so your project works beyond the local machine.",
+    name: "API & Deployment Support",
+    tag: "BACKEND · DATABASE · CLOUD",
+    text: "Production cloud setup, database optimization, and API integration for local and live web applications.",
   },
 ];
 export const metadata = {
