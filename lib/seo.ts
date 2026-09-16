@@ -40,11 +40,11 @@ export const teamMembers = [
     slug: "samarth-more",
     name: "Samarth More",
     displayName: "Samarth More",
-    role: "Senior Developer · DevOps Engineer",
+    role: "Jr Developer · Support Engineer",
     description:
       "Samarth More is a Jr developer and DevOps engineer at Vivek Softwares, focused on web development and cloud infrastructure.",
     bio: "Samarth More works on software development and DevOps at Vivek Softwares. His role covers web development and cloud infrastructure, bringing application development and deployment together.",
-    skills: ["Web development", "Support Engineer"],
+    skills: ["Support Engineer"],
   },
 ];
 
