@@ -436,6 +436,24 @@ footer h2 em {
   line-height: 1.6;
 }
 
+.teamMember .cardAction {
+  color: #b8a5ff !important;
+}
+
+.profileLinks {
+  flex-wrap: wrap;
+}
+
+.teamProfileHero h1 {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .teamNumber {
   color: #8a70ff;
   font-size: 12px;
@@ -1563,4 +1581,3 @@ footer h2 {
   font-weight: 800;
   color: #ffffff;
 }
-

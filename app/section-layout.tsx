@@ -11,8 +11,8 @@ export default function SectionLayout({
       <Navbar />
       {children}
       <div className="pageFoot wrap">
-        <Link href="/dashboard">← Back to dashboard</Link>
-        <span>© 2026 Vivek</span>
+        <Link href="/">← Back to home</Link>
+        <span>© 2026 Vivek Softwares</span>
       </div>
     </main>
   );

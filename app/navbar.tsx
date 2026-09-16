@@ -83,10 +83,10 @@ export default function Navbar() {
 
   return (
     <nav className="nav wrap">
-      <Link className="logo" href="/dashboard" aria-label="Home">
+      <Link className="logo" href="/" aria-label="Home">
         <NavIcon name="home" />
         <b>V</b>
-        <span className="navBrandText">Vivek.dev</span>
+        <span className="navBrandText">Vivek Softwares</span>
       </Link>
       <div className="navLinks">
         <Link

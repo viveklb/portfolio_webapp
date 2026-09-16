@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Google_Sans, Roboto } from "next/font/google";
-import { defaultDescription, defaultKeywords, ownerName, siteName, siteUrl } from "@/lib/seo";
+import {
+  defaultDescription,
+  defaultKeywords,
+  ownerName,
+  siteName,
+  siteUrl,
+  teamMembers,
+} from "@/lib/seo";
 import "./globals.css";
 import "./light-theme.css";
 import "./design-refresh.css";
@@ -25,33 +32,33 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${ownerName} | Full-Stack Web Developer in Solapur`,
+    default: `${siteName} | Web Development Team in Solapur`,
     template: `%s | ${siteName}`,
   },
   description: defaultDescription,
   applicationName: siteName,
-  authors: [
-    { name: "Vivek Laxman Bharamshetti", url: `${siteUrl}/about` },
-    { name: "Vaishnavi Yelapure", url: `${siteUrl}/dashboard#team` },
-    { name: "Aditya Rachatte", url: `${siteUrl}/dashboard#team` },
-  ],
+  authors: teamMembers.map((member) => ({
+    name: member.name,
+    url: `${siteUrl}/team/${member.slug}`,
+  })),
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
   creator: ownerName,
   publisher: siteName,
   category: "technology",
   formatDetection: { email: false, address: false, telephone: false },
   keywords: defaultKeywords,
-  alternates: { canonical: "/dashboard" },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "/dashboard",
+    url: "/",
     siteName,
-    title: `${ownerName} | Full-Stack Web Developer in Solapur`,
+    title: `${siteName} | Web Development Team in Solapur`,
     description: defaultDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${ownerName} | Full-Stack Web Developer`,
+    title: `${siteName} | Web Development Team in Solapur`,
     description: defaultDescription,
   },
   robots: {
@@ -76,11 +83,20 @@ const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      alternateName: "Vivek.dev",
+      inLanguage: "en-IN",
+      publisher: { "@id": `${siteUrl}/#business` },
+    },
+    {
       "@type": "Person",
       "@id": `${siteUrl}/#vivek-bharamshetti`,
       name: "Vivek Laxman Bharamshetti",
       alternateName: ["Vivek Bharamshetti", "Vivek"],
-      url: `${siteUrl}/about`,
+      url: `${siteUrl}/team/vivek-bharamshetti`,
       image: `${siteUrl}/vivek-square-portrait.png`,
       jobTitle: "Owner & Full-Stack Developer",
       worksFor: { "@id": `${siteUrl}/#business` },
@@ -103,6 +119,7 @@ const structuredData = {
       "@type": "Person",
       "@id": `${siteUrl}/#vaishnavi-yelapure`,
       name: "Vaishnavi Yelapure",
+      url: `${siteUrl}/team/vaishnavi-yelapure`,
       jobTitle: "Frontend Developer & UI/UX Specialist",
       worksFor: { "@id": `${siteUrl}/#business` },
       knowsAbout: [
@@ -117,6 +134,7 @@ const structuredData = {
       "@type": "Person",
       "@id": `${siteUrl}/#aditya-rachatte`,
       name: "Aditya Rachatte",
+      url: `${siteUrl}/team/aditya-rachatte`,
       jobTitle: "Senior Developer & DevOps Engineer",
       worksFor: { "@id": `${siteUrl}/#business` },
       knowsAbout: [
@@ -130,8 +148,8 @@ const structuredData = {
     {
       "@type": "ProfessionalService",
       "@id": `${siteUrl}/#business`,
-      name: "Vivek Softwares (Vivek.dev)",
-      alternateName: "Vivek Softwares",
+      name: siteName,
+      alternateName: "Vivek.dev",
       url: siteUrl,
       image: `${siteUrl}/vivek-square-portrait.png`,
       email: "bharamshettivivek71@gmail.com",

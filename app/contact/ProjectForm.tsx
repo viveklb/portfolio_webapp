@@ -87,7 +87,7 @@ export default function ProjectForm({
       form.reset();
       setSubmitState("success");
       setMessage(
-        "Thanks! Your enquiry has been received and sent to Vivek (+91 7083232813).",
+        "Thanks! Your enquiry has been saved. You can also send it to Vivek using the WhatsApp button below.",
       );
     } catch (error) {
       setSubmitState("error");
@@ -209,7 +209,15 @@ export default function ProjectForm({
           Website
           <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
-        <div className="formSubmit fullField" style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-start" }}>
+        <div
+          className="formSubmit fullField"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            alignItems: "flex-start",
+          }}
+        >
           <button className="btn" disabled={isSubmitting} type="submit">
             {isSubmitting ? "Sending…" : "Send project requirements ↗"}
           </button>
