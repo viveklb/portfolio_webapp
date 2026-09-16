@@ -24,7 +24,7 @@ export const teamMembers = [
     description:
       "Vaishnavi Yelapure is a frontend developer and UI/UX specialist at Vivek Softwares, working on web interfaces and system design.",
     bio: "Vaishnavi Yelapure focuses on the frontend of web applications, user interface design and user experience. Her role at Vivek Softwares includes system design, connecting application structure with how people use the product.",
-    skills: ["Frontend development", "UI/UX design", "System design"],
+    skills: ["Frontend development", "UI/UX design", "System design", "Payment Gateway Integration"],
   },
   {
     slug: "aditya-rachatte",
@@ -35,6 +35,16 @@ export const teamMembers = [
       "Aditya Rachatte is a senior developer and DevOps engineer at Vivek Softwares, focused on web development and cloud infrastructure.",
     bio: "Aditya Rachatte works on software development and DevOps at Vivek Softwares. His role covers web development and cloud infrastructure, bringing application development and deployment together.",
     skills: ["Web development", "DevOps", "Cloud infrastructure"],
+  },
+   {
+    slug: "samarth-more",
+    name: "Samarth More",
+    displayName: "Samarth More",
+    role: "Senior Developer · DevOps Engineer",
+    description:
+      "Samarth More is a Jr developer and DevOps engineer at Vivek Softwares, focused on web development and cloud infrastructure.",
+    bio: "Samarth More works on software development and DevOps at Vivek Softwares. His role covers web development and cloud infrastructure, bringing application development and deployment together.",
+    skills: ["Web development", "Support Engineer"],
   },
 ];
 
