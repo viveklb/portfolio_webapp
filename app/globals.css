@@ -1342,6 +1342,7 @@ footer h2 em {
 .experienceCard h3, .detailColumn h3, .cvProjects h3 { margin: 10px 0; font-size: 23px; }
 .experienceCard p, .detailColumn p, .cvProjects article p { color: #99a5bb; line-height: 1.7; margin-bottom: 0; }
 .ownerDetails { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; padding: 55px 0 90px; }
+.ownerDetailsSingle { grid-template-columns: 1fr; }
 .detailColumn > small, .cvProjects > small { display: block; margin-bottom: 28px; }
 .detailColumn article { padding: 22px 0; border-top: 1px solid #1b2740; }
 .detailColumn article:last-child { border-bottom: 1px solid #1b2740; }

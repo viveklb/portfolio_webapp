@@ -78,45 +78,7 @@ export default function About() {
           can present confidently.
         </p>
       </section>
-      <section className="ownerStory wrap">
-        <div className="ownerStoryTitle">
-          <small>EXPERIENCE</small>
-          <h2>
-            Building practical software <em>since 2023.</em>
-          </h2>
-        </div>
-        <article className="experienceCard">
-          <div>
-            <span>Aug 2023 - Present</span>
-            <h3>Software Developer</h3>
-            <p>N. B. Navale Sinhgad College of Engineering, Kegaon, Solapur</p>
-          </div>
-          <p>
-            Developing full-stack MERN applications, Next.js portals, and REST
-            APIs for secure authentication, data management, and real-time
-            product features.
-          </p>
-        </article>
-      </section>
-      <section className="ownerDetails wrap">
-        <div className="detailColumn">
-          <small>EDUCATION</small>
-          <article>
-            <span>2025</span>
-            <h3>Bachelor of Computer Applications</h3>
-            <p>Punyashlok Ahilyadevi Holkar Solapur University - 67%</p>
-          </article>
-          <article>
-            <span>2020</span>
-            <h3>Diploma in Mechanical Engineering</h3>
-            <p>Government Polytechnic Solapur - 60.88%</p>
-          </article>
-          <article>
-            <span>2015</span>
-            <h3>Secondary School Certificate</h3>
-            <p>Shri Shahaji High School, Akkalkot - 80%</p>
-          </article>
-        </div>
+      <section className="ownerDetails ownerDetailsSingle wrap">
         <div className="detailColumn">
           <small>TECHNICAL TOOLKIT</small>
           <div className="skillCloud">
